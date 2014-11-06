@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+project.sourceCompatibility = 1.8
+project.targetCompatibility = 1.8
+
+version = '0.0.1'
+
+
+dependencies {
+	compile group: 'net.openhft', name: 'chronicle-map', version: '2.0.5a'
+	testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets.main.java.srcDirs = ['src', 'generated-src'] 
+sourceSets.test.java.srcDirs = ['test'] 
+
+compileJava {
+	options.encoding = 'UTF-8'
+	options.debugOptions.debugLevel = "source,lines,vars"
+}
+compileTestJava {
+	source = 'test'
+	options.encoding = 'UTF-8'
+}
